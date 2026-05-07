@@ -32,7 +32,7 @@ final class RemovingNodeVisitor implements NodeVisitorInterface
 
     public function enterNode(Node $node, Environment $env): Node
     {
-        if ($this->enabled && $node instanceof FilterExpression) {
+        if ($this->enabled && $node instanceof FilterExpression && $node->hasAttribute('twig_callable')) {
             $name = $node->getAttribute('twig_callable')->getName();
 
             if ('desc' === $name || 'meaning' === $name) {

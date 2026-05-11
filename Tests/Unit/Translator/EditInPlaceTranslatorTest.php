@@ -25,7 +25,7 @@ use Translation\Bundle\Translator\TranslatorInterface;
  */
 final class EditInPlaceTranslatorTest extends TestCase
 {
-    public function testWithNotLocaleAwareTranslator()
+    public function testWithNotLocaleAwareTranslator(): void
     {
         if (!interface_exists(NewTranslatorInterface::class)) {
             $this->markTestSkipped('Relevant only when NewTranslatorInterface is available.');

@@ -57,8 +57,12 @@ final class DefaultApplyingNodeVisitor implements NodeVisitorInterface
             $transNode = $transNode->getNode('node');
         }
 
-        if (!$transNode instanceof FilterExpression || !$transNode->hasAttribute('twig_callable')) {
+        if (!$transNode instanceof FilterExpression) {
             throw new \RuntimeException('The "desc" filter must be applied after a "trans", or "transchoice" filter.');
+        }
+
+        if (!$transNode->hasAttribute('twig_callable')) {
+            return $node;
         }
 
         $wrappingNode = $node->getNode('node');
